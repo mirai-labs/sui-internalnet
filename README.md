@@ -20,8 +20,18 @@ The ideal solution to this problem is a private network that can only be accesse
 
 **Sui Internalnet** is simple to use, almost too simple.
 
-First, you'll need to create an account at [Fly.io](https://fly.io), and install `flyctl`. Once `flyctl` has been installed, run the command below from the root directory of this repo.
+First, you'll need to create an account at [Fly.io](https://fly.io), and install `flyctl`.
+
+Once `flyctl` has been installed, create a Fly app by running the command below. When prompted for an app name, you can either provide a name or let flyctl generate a random name.
 
 ```
-fly launch --no-public-ips
+fly apps create
+```
+
+Next, edit the provided `fly.toml` – replace <APP_NAME> with the name of your app and <PRIMARY_REGION> with the region code of the Fly region that's closest to you (you can view all the regions by running `fly platform regions`).
+
+Finally, run the command below to deploy the app.
+
+```
+fly deploy --no-public-ips --flycast
 ```
